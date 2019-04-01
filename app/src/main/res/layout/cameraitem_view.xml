@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
+    android:layout_height="120dp">
+    <LinearLayout
+        android:background="#b2efe0"
+        android:padding="10dp"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/result_image"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/result_name"
+            android:gravity="center"
+            android:text="西红柿炒鸡蛋"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/result_number"
+
+            android:textSize="25sp"
+            android:text="20"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

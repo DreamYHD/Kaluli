@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.administrator.kalulli.ui.CameraFragment">
+
+    <com.cjt2325.cameralibrary.JCameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:duration_max="10000"
+        app:iconMargin="20dp"
+        app:iconSize="30dp"
+        app:iconSrc="@drawable/ic_photo_camera_black_24dp"/>
+
+</LinearLayout>

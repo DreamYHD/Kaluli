@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <ImageView
+        android:id="@+id/back_register_image"
+        android:padding="5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/username_register"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp"/>
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:text="注册界面"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+
+    <EditText
+        android:id="@+id/username_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="用户名"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true" />
+    <TextView
+        android:background="@color/colorSpiltWhite"
+        android:id="@+id/hint1"
+        android:layout_below="@+id/username_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <EditText
+        android:id="@+id/password_register"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="密码"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint1"
+        />
+    <TextView
+        android:id="@+id/hint2"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/password_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/height_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hint2"
+        android:background="@color/colorWhite"
+        android:hint="身高"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+    <TextView
+        android:id="@+id/hint3"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/height_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/weight_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hint3"
+        android:background="@color/colorWhite"
+        android:hint="体重"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+
+    <TextView
+        android:id="@+id/hint4"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/weight_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/sex_register"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:hint="性别"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/hint4" />
+    <TextView
+        android:id="@+id/hint5"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/sex_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/major_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hint5"
+        android:background="#FFFF"
+        android:hint="职业"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+
+    <TextView
+        android:id="@+id/hint7"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/major_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/age_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/hint7"
+        android:background="#FFFF"
+        android:hint="年龄"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+    <TextView
+        android:id="@+id/hint8"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/age_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/love_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hint8"
+        android:background="#FFFF"
+        android:hint="口味"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+    <TextView
+        android:id="@+id/hint9"
+        android:background="@color/colorSpiltWhite"
+        android:layout_below="@+id/love_register"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+    <EditText
+        android:id="@+id/stick_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hint9"
+        android:background="#FFFF"
+        android:hint="病史"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+    <Button
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/register_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="注册"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/stick_register" />
+
+</RelativeLayout>

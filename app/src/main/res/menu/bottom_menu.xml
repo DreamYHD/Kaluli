@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/find_item"
+        android:icon="@drawable/ic_photo_camera_black_24dp"
+        android:title="识别"/>
+    <item android:id="@+id/near_item"
+        android:icon="@drawable/ic_bubble_chart_black_24dp"
+        android:title="推荐"/>
+
+    <item android:id="@+id/me_item"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="我的"/>
+</menu>

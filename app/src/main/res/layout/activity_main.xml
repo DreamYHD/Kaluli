@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kalulli.MainActivity">
+    <FrameLayout
+        android:id="@+id/content_main"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="53dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+    <TextView
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:background="#d9d8d8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_menu"
+        app:menu="@menu/bottom_menu"
+        app:itemTextColor="@color/selector_bottom_navi"
+        app:itemIconTint="@color/selector_bottom_navi"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,26 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f2f2f2"
+    tools:context="com.example.administrator.kalulli.ui.SuggestFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:textColor="#ffff"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="推荐食物" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/suggest_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

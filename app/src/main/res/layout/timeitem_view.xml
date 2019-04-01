@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/ic_album_black_24dp" />
+
+    <View
+        android:id="@+id/line_normal"
+        android:layout_width="3dp"
+        android:layout_height="112dp"
+        android:layout_below="@+id/image"
+        android:layout_marginLeft="30dp"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_toRightOf="@+id/image"
+        android:padding="3dp"
+        android:text="3月20"
+        android:textSize="12dp" />
+
+    <ImageView
+
+        android:id="@+id/show_image"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/show_time"
+        android:layout_toRightOf="@id/image"
+
+        android:src="@drawable/daily" />
+
+    <TextView
+        android:id="@+id/food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_time"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_toEndOf="@+id/show_image"
+        android:text="食物名称 ：水果沙拉" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorTextBlack"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/line_normal"
+        android:layout_alignStart="@+id/food_name"
+        android:layout_marginBottom="19dp"
+        android:text="卡路里含量 ：100" />
+
+</RelativeLayout>
