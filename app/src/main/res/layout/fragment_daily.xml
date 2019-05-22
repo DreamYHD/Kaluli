@@ -1,0 +1,152 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f2f2f2"
+    tools:context="com.example.administrator.kalulli.ui.daily.DailyFragment">
+
+    <RelativeLayout
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="11dp"
+            android:text="还可摄入" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/daily_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView6"
+            android:layout_marginBottom="14dp"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/daily_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView6"
+            android:layout_marginEnd="45dp"
+            android:text="05/17" />
+    </RelativeLayout>
+    <TextView
+        android:background="@color/colorSpiltWhite"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <RelativeLayout
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <TextView
+            android:textColor="#3d3d3d"
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="早餐" />
+
+        <TextView
+            android:textColor="#3d3d3d"
+            android:id="@+id/morning_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView9"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="39dp"
+            android:text="未记录" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <RelativeLayout
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <TextView
+            android:textColor="#3d3d3d"
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="18dp"
+            android:text="午餐" />
+
+        <TextView
+            android:id="@+id/afternoon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textView10"
+            android:layout_marginEnd="38dp"
+            android:text="未记录" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <RelativeLayout
+        android:background="#ffff"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <TextView
+            android:textColor="#3d3d3d"
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="晚餐" />
+
+        <TextView
+            android:id="@+id/evening_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="39dp"
+            android:text="未记录" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/daily_btn"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:text="营养分析与饮食建议"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/shape_back"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loading"
+            app:indicatorColor="@color/google_blue"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:indicatorName="PacmanIndicator"
+            />
+    </RelativeLayout>
+</LinearLayout>

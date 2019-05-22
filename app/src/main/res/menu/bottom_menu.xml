@@ -7,7 +7,9 @@
     <item android:id="@+id/near_item"
         android:icon="@drawable/ic_bubble_chart_black_24dp"
         android:title="推荐"/>
-
+    <item android:id="@+id/daily_item"
+        android:icon="@drawable/ic_today_black_24dp"
+        android:title="日记"/>
     <item android:id="@+id/me_item"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="我的"/>

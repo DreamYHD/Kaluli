@@ -40,4 +40,6 @@ dependencies {
     implementation files('libs/log4j-1.2.17.jar')
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    compile('cn.leancloud.android:avoscloud-sdk:4.7.10')
+    compile 'com.wang.avi:library:2.1.3'
 }

@@ -96,7 +96,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:textColor="#ffff"
-        android:text="登录即同意微课用户协议"
+        android:text="登录即同意卡路里识别用户协议"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

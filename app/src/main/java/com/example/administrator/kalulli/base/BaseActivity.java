@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
+
 import butterknife.ButterKnife;
 
 /**
@@ -18,7 +20,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
     protected FragmentManager mFragmentManager;
     protected Activity mActivity;
-    //protected AVUser mAVUserFinal;
+    protected AVUser mAVUserFinal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mFragmentManager = getSupportFragmentManager();
         mActivity = this;
-        //mAVUserFinal = AVUser.getCurrentUser();
+        mAVUserFinal = AVUser.getCurrentUser();
         logicActivity(savedInstanceState);
     }
 

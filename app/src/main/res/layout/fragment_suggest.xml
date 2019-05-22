@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f2f2f2"
-    tools:context="com.example.administrator.kalulli.ui.SuggestFragment">
+    tools:context="com.example.administrator.kalulli.ui.suggest.SuggestFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

@@ -52,7 +52,7 @@ public class SaveBitmap {
         }
         // 最后通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" +"")));
-        //Log.i(TAG, "saveImageToGallery: "+Sample.getResult(file.getPath()).toString());
+        //Log.i(TAG, "saveImageToGallery: "+SampleUtil.getResult(file.getPath()).toString());
         return file.getPath();
     }
 

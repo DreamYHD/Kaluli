@@ -1,4 +1,4 @@
-package com.example.administrator.kalulli.ui;
+package com.example.administrator.kalulli.ui.suggest;
 
 
 import android.os.Bundle;

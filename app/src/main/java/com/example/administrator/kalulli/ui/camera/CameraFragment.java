@@ -1,15 +1,12 @@
-package com.example.administrator.kalulli.ui;
-
+package com.example.administrator.kalulli.ui.camera;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,14 +18,11 @@ import com.cjt2325.cameralibrary.JCameraView;
 import com.cjt2325.cameralibrary.listener.ClickListener;
 import com.cjt2325.cameralibrary.listener.JCameraListener;
 import com.example.administrator.kalulli.R;
-import com.example.administrator.kalulli.utils.Sample;
+import com.example.administrator.kalulli.utils.SampleUtil;
 import com.example.administrator.kalulli.utils.SaveBitmap;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -87,12 +81,13 @@ public class CameraFragment extends Fragment {
                     @Override
                     public void run() {
                         // 传入可选参数调用接口
+                        Log.i(TAG, "run: size = "+bitmap.getByteCount());
                         HashMap<String, String> options = new HashMap<String, String>();
                         options.put("top_num", "1");
                         options.put("filter_threshold", "0.7");
                         options.put("baike_num", "1");
                         str = SaveBitmap.saveImageToGallery(getActivity(),bitmap);
-                        JSONObject res = Sample.client.dishDetect(str, options);
+                        JSONObject res = SampleUtil.client.dishDetect(str, options);
                         Log.i(TAG, "run: "+res.toString());
                         //Log.i(TAG, "run: "+res.toString());
                         jsonObject = res;
@@ -107,7 +102,6 @@ public class CameraFragment extends Fragment {
 /*                if (jsonObject != null){
                     Intent intent = new Intent();
                     intent.putExtra("json",jsonObject.toString());
-
                     Toast.makeText(getContext(), "识别成功", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }*/
@@ -129,7 +123,7 @@ public class CameraFragment extends Fragment {
         camera.setRightClickListener(new ClickListener() {
             @Override
             public void onClick() {
-                Toast.makeText(getContext(), "h", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "hello", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.kalulli.ui.MeFragment">
+    tools:context="com.example.administrator.kalulli.ui.me.MeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

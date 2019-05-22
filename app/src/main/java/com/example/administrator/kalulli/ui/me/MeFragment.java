@@ -1,8 +1,10 @@
-package com.example.administrator.kalulli.ui;
+package com.example.administrator.kalulli.ui.me;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,13 +12,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
 import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.ui.adapter.DailyAdapter;
 import com.example.administrator.kalulli.ui.regist.LoginActivity;
+import com.example.administrator.kalulli.utils.TableUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +49,20 @@ public class MeFragment extends Fragment {
     @BindView(R.id.daily_recyclerView)
     RecyclerView dailyRecyclerView;
     Unbinder unbinder;
-    private List<String>list = new ArrayList<>();
+    private List<AVObject>meList = new ArrayList<>();
+    private AVUser mAVUser = AVUser.getCurrentUser();
 
     public MeFragment() {
         // Required empty public constructor
     }
 
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            initRecyclerView();
+        }
+    };
     public static MeFragment getInstance() {
         return new MeFragment();
     }
@@ -58,13 +73,43 @@ public class MeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         unbinder = ButterKnife.bind(this, view);
-        DailyAdapter dailyAdapter = new DailyAdapter(list, getContext());
-        dailyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        dailyRecyclerView.setAdapter(dailyAdapter);
-        dailyAdapter.notifyDataSetChanged();
+        getData();
         return view;
     }
 
+    private void getData() {
+        if (mAVUser != null){
+            textView.setText(mAVUser.getUsername());
+            AVQuery<AVObject> query = new AVQuery<>(TableUtil.DAILY_FOOD_TABLE_NAME);
+            query.whereEqualTo(TableUtil.DAILY_FOOD_TABLE_NAME, AVUser.getCurrentUser());
+            // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
+            query.findInBackground(new FindCallback<AVObject>() {
+                @Override
+                public void done(List<AVObject> list, AVException e) {
+                    if (e == null){
+                        meList = list;
+                        handler.sendEmptyMessage(0);
+                        Log.i(TAG, "done: "+ list.size());
+                    }else {
+                        Log.e(TAG, "done: "+e.getMessage() );
+                    }
+                }
+            });
+
+
+
+        }else {
+            textView.setText("请登录");
+        }
+    }
+
+
+    public void initRecyclerView(){
+        DailyAdapter dailyAdapter = new DailyAdapter(meList, getContext());
+        dailyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        dailyRecyclerView.setAdapter(dailyAdapter);
+        dailyAdapter.notifyDataSetChanged();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -75,10 +120,16 @@ public class MeFragment extends Fragment {
     public void onImageButtonClicked() {
         Log.i(TAG, "onImageButtonClicked: "+"click login");
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,200);
     }
 
     @OnClick(R.id.imageButton2)
     public void onImageButton2Clicked() {
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getData();
     }
 }

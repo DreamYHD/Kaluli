@@ -52,7 +52,7 @@
         android:text="食物名称 ：水果沙拉" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/food_calorie"
         android:layout_width="wrap_content"
         android:textColor="@color/colorTextBlack"
         android:layout_height="wrap_content"

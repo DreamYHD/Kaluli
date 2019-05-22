@@ -3,7 +3,25 @@
     <color name="colorPrimary">#8dbade</color>
     <color name="colorPrimaryDark">#8dbade</color>
     <color name="colorAccent">#779dd1</color>
-    <color name="colorWhite">#ffff</color>
+    <color name="colorWhite">#FFFF</color>
     <color name="colorSpiltWhite">#ebebeb</color>
     <color name="colorTextBlack">#5b5b5b</color>
+
+    <color name="google_red">#ea4235</color>
+    <color name="google_yellow">#fabc05</color>
+    <color name="google_green">#34a853</color>
+    <color name="google_blue">#4286f5</color>
+
+    <color name="colorBg">#e8eff5</color>
+
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+
+
+    <!--<color name="colorAll">#43beb0</color>-->
+
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
 </resources>
