@@ -125,6 +125,7 @@ public class DailyFragment extends Fragment {
                     }
 
 
+
                 } else {
                     Log.e(TAG, "done: " + e.getMessage());
                 }
