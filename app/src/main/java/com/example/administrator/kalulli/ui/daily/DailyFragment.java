@@ -124,8 +124,6 @@ public class DailyFragment extends Fragment {
                         dailyMoreTv.setText(800 - sum + "");
                     }
 
-
-
                 } else {
                     Log.e(TAG, "done: " + e.getMessage());
                 }
