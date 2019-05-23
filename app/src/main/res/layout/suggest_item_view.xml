@@ -25,6 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
             <TextView
+                android:id="@+id/food_name_item"
                 android:paddingTop="4dp"
                 android:layout_gravity="center"
                 android:textColor="#515151"
@@ -35,11 +36,13 @@
         </LinearLayout>
         <ImageView
 
+            android:id="@+id/food_img_item"
             android:background="#ffff"
             android:src="@drawable/item_suggest"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
         <TextView
+            android:id="@+id/food_type_item"
             android:textColor="@color/colorPrimary"
             android:paddingTop="3dp"
             android:paddingLeft="10dp"
@@ -48,9 +51,11 @@
             android:layout_width="match_parent"
             android:layout_height="25dp" />
         <TextView
+            android:id="@+id/food_info_item"
             android:textColor="#515151"
             android:paddingTop="3dp"
             android:paddingLeft="10dp"
+            android:maxLines="2"
             android:text="食物适合完成吃完饭后进行使用"
             android:background="#ffff"
             android:layout_width="match_parent"

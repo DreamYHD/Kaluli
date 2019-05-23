@@ -68,6 +68,7 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.ViewHolder> 
                 .load(imgUrl)
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.showImage);
+
     }
     @Override
     public int getItemCount() {

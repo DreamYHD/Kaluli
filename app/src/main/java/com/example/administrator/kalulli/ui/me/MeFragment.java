@@ -1,11 +1,13 @@
 package com.example.administrator.kalulli.ui.me;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +23,9 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.example.administrator.kalulli.R;
+import com.example.administrator.kalulli.base.OnClickListener;
 import com.example.administrator.kalulli.ui.adapter.DailyAdapter;
+import com.example.administrator.kalulli.ui.daily.ShowFoodActivity;
 import com.example.administrator.kalulli.ui.regist.LoginActivity;
 import com.example.administrator.kalulli.utils.TableUtil;
 
@@ -50,7 +54,6 @@ public class MeFragment extends Fragment {
     RecyclerView dailyRecyclerView;
     Unbinder unbinder;
     private List<AVObject>meList = new ArrayList<>();
-    private AVUser mAVUser = AVUser.getCurrentUser();
 
     public MeFragment() {
         // Required empty public constructor
@@ -78,10 +81,11 @@ public class MeFragment extends Fragment {
     }
 
     private void getData() {
-        if (mAVUser != null){
-            textView.setText(mAVUser.getUsername());
+        AVUser avUser = AVUser.getCurrentUser();
+        if (avUser != null){
+            textView.setText(avUser.getUsername());
             AVQuery<AVObject> query = new AVQuery<>(TableUtil.DAILY_FOOD_TABLE_NAME);
-            query.whereEqualTo(TableUtil.DAILY_FOOD_TABLE_NAME, AVUser.getCurrentUser());
+            query.whereEqualTo(TableUtil.DAILY_FOOD_USER, avUser);
             // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
             query.findInBackground(new FindCallback<AVObject>() {
                 @Override
@@ -106,6 +110,15 @@ public class MeFragment extends Fragment {
 
     public void initRecyclerView(){
         DailyAdapter dailyAdapter = new DailyAdapter(meList, getContext());
+        dailyAdapter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void click(int position, View view) {
+                Intent intent = new Intent(getActivity(), ShowFoodActivity.class);
+                intent.putExtra("objectId",meList.get(position).getObjectId());
+                intent.putExtra("table",TableUtil.DAILY_FOOD_TABLE_NAME);
+                startActivity(intent);
+            }
+        });
         dailyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         dailyRecyclerView.setAdapter(dailyAdapter);
         dailyAdapter.notifyDataSetChanged();
@@ -125,6 +138,23 @@ public class MeFragment extends Fragment {
 
     @OnClick(R.id.imageButton2)
     public void onImageButton2Clicked() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("提示：");
+        builder.setMessage("是否退出登录");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AVUser.logOut();
+                getData();
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
     }
 
     @Override

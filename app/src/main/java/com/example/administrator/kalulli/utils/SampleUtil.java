@@ -20,8 +20,6 @@ public class SampleUtil {
     public static final String APP_ID = "15901626";
     public static final String API_KEY = "gSmHI8zmM0TSr8XPlnnSUEHV";
     public static final String SECRET_KEY = "FoxHmL9uwnic37NPzf0dG4oezVWQSi7g";
-
     private static final String TAG = "SampleUtil";
     public static final AipImageClassify client = new AipImageClassify(APP_ID,API_KEY,SECRET_KEY);
-
 }

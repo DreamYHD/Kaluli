@@ -18,13 +18,13 @@ public class TableUtil {
     public static final String USER_MAJOR = "major";
     public static final String USER_AGE = "age";
     //food
-    public static final String FOOD_TABLE_NAME = "food";
+    public static final String FOOD_TABLE_NAME = "Food";
     public static final String FOOD_NAME = "name";
     public static final String FOOD_DESCRIPTION = "description";
     public static final String FOOD_AFFECT = "affect";
     public static final String FOOD_CALORIE = "calorie";
     public static final String FOOD_TYPE= "type";
-    public static final String FOOD_IMG = "img";
+    public static final String FOOD_URL = "url";
     //daily
     public static final String DAILY_TABLE_NAME = "daily";
     public static final String DAILY_DATE = "date";
@@ -37,8 +37,9 @@ public class TableUtil {
     public static final String DAILY_FOOD_NAME = "name";
     public static final String DAILY_FOOD_TIME = "time";
     public static final String DAILY_FOOD_TYPE = "type";
-    public static final String DAILY_FOOD_INFO = "info";
+    public static final String DAILY_FOOD_DESCRIPTION = "description";
     public static final String DAILY_FOOD_URL = "url";
     public static final String DAILY_FOOD_CALORIE = "calorie";
     public static final String DAILY_FOOD_USER = "user";
+    public static final String DAILY_FOOD_AFFECT = "affect";
 }

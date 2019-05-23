@@ -61,7 +61,7 @@
             android:text="早餐" />
 
         <TextView
-            android:textColor="#3d3d3d"
+
             android:id="@+id/morning_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,16 +137,25 @@
         android:layout_width="match_parent"
         android:layout_height="60dp" />
     <RelativeLayout
-        android:gravity="center"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.wang.avi.AVLoadingIndicatorView
+            android:layout_centerHorizontal="true"
             android:id="@+id/loading"
             app:indicatorColor="@color/google_blue"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:indicatorName="PacmanIndicator"
             />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/loading_tv"
+            android:layout_below="@id/loading"
+            android:gravity="center"
+            android:text="分析中..."
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
     </RelativeLayout>
 </LinearLayout>

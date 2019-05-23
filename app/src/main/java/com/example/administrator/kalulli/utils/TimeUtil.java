@@ -1,5 +1,7 @@
 package com.example.administrator.kalulli.utils;
 
+import android.annotation.SuppressLint;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -8,20 +10,17 @@ import java.text.SimpleDateFormat;
 
 public class TimeUtil {
     public static String getDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String current = sdf.format(System.currentTimeMillis()).split(" ")[0];
-        return current;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(System.currentTimeMillis()).split(" ")[0];
     }
     public static String getNowTime(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String current = sdf.format(System.currentTimeMillis()).split(" ")[1];
-        return current;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(System.currentTimeMillis()).split(" ")[1];
     }
     public static String getRealDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String current = sdf.format(System.currentTimeMillis()).split(":")[0]
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(System.currentTimeMillis()).split(":")[0]
                 +":"+sdf.format(System.currentTimeMillis()).split(":")[1];
-        return current;
     }
 
 }

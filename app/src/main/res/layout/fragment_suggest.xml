@@ -1,14 +1,14 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f2f2f2"
     tools:context="com.example.administrator.kalulli.ui.suggest.SuggestFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/text"
         android:textColor="#ffff"
         android:background="@color/colorPrimary"
         android:gravity="center"
@@ -17,10 +17,49 @@
         android:layout_height="50dp"
         android:text="推荐食物" />
     <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="52dp"
         android:id="@+id/suggest_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+    <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout
+        xmlns:rfal="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/do_fbtn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        rfal:rfal_frame_color="#ffffff"
+        rfal:rfal_frame_alpha="0.7"
+        >
+        <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton
+            xmlns:rfab="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/do_fbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:padding="8dp"
+            rfab:rfab_size="normal"
+            rfab:rfab_drawable="@drawable/rfab__drawable_rfab_default"
+            rfab:rfab_color_normal="@color/colorAccent"
+            rfab:rfab_color_pressed="@color/colorAccent"
+            rfab:rfab_shadow_radius="3dp"
+            rfab:rfab_shadow_color="#999999"
+            rfab:rfab_shadow_dx="0dp"
+            rfab:rfab_shadow_dy="0dp"
+            />
+    </com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout>
+    <com.wang.avi.AVLoadingIndicatorView
 
-</LinearLayout>
+        android:layout_centerInParent="true"
+        android:id="@+id/loading"
+        app:indicatorColor="@color/google_blue"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:indicatorName="PacmanIndicator"
+        />
+</RelativeLayout>

@@ -3,6 +3,8 @@ package com.example.administrator.kalulli.ui.daily;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,13 +18,11 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
-import com.example.administrator.kalulli.MainActivity;
 import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.utils.TableUtil;
 import com.example.administrator.kalulli.utils.TimeUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import java.sql.Time;
 import java.util.List;
 
 import butterknife.BindView;
@@ -52,6 +52,19 @@ public class DailyFragment extends Fragment {
     @BindView(R.id.loading)
     AVLoadingIndicatorView loading;
     Unbinder unbinder;
+    @BindView(R.id.loading_tv)
+    TextView loadingTv;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            loading.hide();
+            loadingTv.setVisibility(View.GONE);
+            Intent intent = new Intent(getActivity(), DailyActivity.class);
+            startActivity(intent);
+        }
+    };
 
     public DailyFragment() {
         // Required empty public constructor
@@ -81,30 +94,38 @@ public class DailyFragment extends Fragment {
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                if (e == null){
-                   AVObject avObject = list.get(0);
-                   double sum = 0.0;
-                   if (avObject.get(TableUtil.DAILY_MORNING) != null && !avObject.get(TableUtil.DAILY_MORNING).equals("")) {
-                        morningTv.setText(avObject.get(TableUtil.DAILY_MORNING).toString());
-                        sum +=  Double.parseDouble(avObject.get(TableUtil.DAILY_MORNING).toString());
-                    }else{
-                       sum += 0;
+                if (e == null) {
+                    if (list == null || list.size() == 0) {
+                        morningTv.setText("未摄取");
+                        afternoonTv.setText("未摄取");
+                        eveningTv.setText("未摄取");
+                        dailyMoreTv.setText(800+"");
+                    } else {
+                        AVObject avObject = list.get(0);
+                        double sum = 0.0;
+                        if (avObject.get(TableUtil.DAILY_MORNING) != null && !avObject.get(TableUtil.DAILY_MORNING).equals("")) {
+                            morningTv.setText(avObject.get(TableUtil.DAILY_MORNING).toString());
+                            sum += Double.parseDouble(avObject.get(TableUtil.DAILY_MORNING).toString());
+                        } else {
+                            sum += 0;
+                        }
+                        if (avObject.get(TableUtil.DAILY_AFTERNOON) != null && !avObject.get(TableUtil.DAILY_AFTERNOON).equals("")) {
+                            afternoonTv.setText(avObject.get(TableUtil.DAILY_AFTERNOON).toString());
+                            sum += Double.parseDouble(avObject.get(TableUtil.DAILY_AFTERNOON).toString());
+                        } else {
+                            sum += 0;
+                        }
+                        if (avObject.get(TableUtil.DAILY_EVENING) != null && !avObject.get(TableUtil.DAILY_EVENING).equals("")) {
+                            eveningTv.setText(avObject.get(TableUtil.DAILY_EVENING).toString());
+                            sum += Double.parseDouble(avObject.get(TableUtil.DAILY_EVENING).toString());
+                        } else {
+                            sum += 0;
+                        }
+                        dailyMoreTv.setText(800 - sum + "");
                     }
-                    if (avObject.get(TableUtil.DAILY_AFTERNOON) != null && !avObject.get(TableUtil.DAILY_AFTERNOON).equals("")) {
-                        morningTv.setText(avObject.get(TableUtil.DAILY_AFTERNOON).toString());
-                        sum +=  Double.parseDouble(avObject.get(TableUtil.DAILY_AFTERNOON).toString());
-                    }else{
-                        sum += 0;
-                    }
-                    if (avObject.get(TableUtil.DAILY_EVENING) != null && !avObject.get(TableUtil.DAILY_EVENING).equals("")) {
-                        morningTv.setText(avObject.get(TableUtil.DAILY_EVENING).toString());
-                        sum +=  Double.parseDouble(avObject.get(TableUtil.DAILY_EVENING).toString());
-                    }else{
-                        sum += 0;
-                    }
-                    dailyMoreTv.setText(1000-sum+"");
-                }else {
-                    Log.e(TAG, "done: "+e.getMessage() );
+
+                } else {
+                    Log.e(TAG, "done: " + e.getMessage());
                 }
             }
         });
@@ -119,18 +140,21 @@ public class DailyFragment extends Fragment {
     @OnClick(R.id.daily_btn)
     public void onViewClicked() {
         loading.show();
+
+        loadingTv.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
-                    Intent intent = new Intent(getActivity(),DailyActivity.class);
-                    startActivity(intent);
-                    loading.hide();
+
+                    Thread.sleep(3000);
+
+                    handler.sendEmptyMessage(0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+
     }
 }

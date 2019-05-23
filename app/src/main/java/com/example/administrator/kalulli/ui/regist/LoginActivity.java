@@ -46,7 +46,6 @@ public class LoginActivity extends BaseActivity {
                     Log.i(TAG, "done: 登陆成功" + AVUser.getCurrentUser().getUsername());
                     toast("登陆成功", 0);
                     setResult(1000);
-
                     mActivity.finish();
 
                 } else {

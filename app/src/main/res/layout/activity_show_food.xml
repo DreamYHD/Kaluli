@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.example.administrator.kalulli.ui.daily.ShowFoodActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/food_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="水果沙拉"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <ImageView
+
+
+            android:id="@+id/food_img"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#ffff"
+            android:src="@drawable/item_suggest" />
+
+        <TextView
+            android:id="@+id/food_type"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffff"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:text="#早餐"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/food_affect"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ffff"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:text="#功效"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/food_calorie"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffff"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:text="#卡路里含量为"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/food_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffff"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:text="食物适合完成吃完饭后进行使用"
+            android:textColor="#515151" />
+    </LinearLayout>
+
+</LinearLayout>
