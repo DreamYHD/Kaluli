@@ -7,11 +7,20 @@
     android:background="#f2f2f2"
     tools:context="com.example.administrator.kalulli.ui.daily.DailyFragment">
 
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/text"
+        android:textColor="#ffff"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="饮食记录" />
     <RelativeLayout
         android:background="#ffff"
         android:layout_width="match_parent"
         android:layout_height="80dp">
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"

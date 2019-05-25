@@ -5,4 +5,6 @@ package com.example.administrator.kalulli.utils;
  */
 
 public class SuggestUtil {
+//    public static final String[]{}
+//    public static
 }

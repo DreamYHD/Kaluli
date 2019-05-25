@@ -25,7 +25,7 @@ import com.avos.avoscloud.FindCallback;
 import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.base.OnClickListener;
 import com.example.administrator.kalulli.ui.adapter.DailyAdapter;
-import com.example.administrator.kalulli.ui.daily.ShowFoodActivity;
+import com.example.administrator.kalulli.ui.suggest.ShowFoodActivity;
 import com.example.administrator.kalulli.ui.regist.LoginActivity;
 import com.example.administrator.kalulli.utils.TableUtil;
 

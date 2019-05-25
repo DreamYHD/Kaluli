@@ -22,7 +22,6 @@ import com.avos.avoscloud.FindCallback;
 import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.base.OnClickListener;
 import com.example.administrator.kalulli.ui.adapter.SuggestAdapter;
-import com.example.administrator.kalulli.ui.daily.ShowFoodActivity;
 import com.example.administrator.kalulli.utils.TableUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton;

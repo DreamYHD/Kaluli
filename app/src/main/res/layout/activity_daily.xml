@@ -1,9 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context="com.example.administrator.kalulli.ui.daily.DailyActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/back_daily_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="饮食分析与建议"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:text="基本信息"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/shape_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#242424"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="目标"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView7"
+                        android:layout_alignBottom="@+id/textView7"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="13dp"
+                        android:text="减肥"
+                        android:textColor="#242424" />
+                </RelativeLayout>
+                <TextView
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+                <TextView
+                    android:id="@+id/plan_tv"
+                    android:textColor="#696969"
+                    android:paddingTop="15dp"
+                    android:textSize="12sp"
+                    android:paddingRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:backgroundTint="#f9fafb"
+                    android:text="1. 您的体重过低，建议保证营养摄入改\n2. 最好的运动方法是你在规定的时间内，尽量多次的进行小规模的有氧运动而不要一次的运动过量，这样的减肥效果会更佳。"
+                    android:singleLine="false"
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp" />
+            </LinearLayout>
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:text="饮食评估"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/shape_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#242424"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="不佳"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/test_type_tv" />
+
+                </RelativeLayout>
+                <TextView
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+                <TextView
+                    android:id="@+id/test_tv"
+                    android:textColor="#696969"
+                    android:paddingTop="15dp"
+                    android:textSize="12sp"
+                    android:paddingRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:background="#f9fafb"
+                    android:text="1. 晚餐吃七分饱,晚上活动量少,吃太多容易积肥\n2. 避免吃饱,每餐食物不要太多，避免大胃口哦。\n3. 吃早餐,每天都要吃早餐,保证代谢且每天食欲更稳定"
+                    android:singleLine="false"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+            <TextView
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:text="饮食方案"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/shape_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#242424"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="每日饮食热量"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView88" />
+
+                </RelativeLayout>
+                <TextView
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+                <RelativeLayout
+                    android:background="#f9fafb"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#696969"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="碳水化合物"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView12" />
+
+                    <TextView
+                        android:textColor="#696969"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView12"
+                        android:layout_alignBottom="@+id/textView12"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text="40% ~ 50%"
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:background="#f9fafb"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#696969"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="脂肪"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView13" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView13"
+                        android:layout_alignBottom="@+id/textView13"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text="25% ~ 35 %"
+                        android:textColor="#696969"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:background="#f9fafb"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#696969"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="蛋白质"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView17" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/textView17"
+                        android:layout_alignBottom="@+id/textView17"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text="20% ~ 35 %"
+                        android:textColor="#696969"
+                        android:id="@+id/textView14" />
+                </RelativeLayout>
+                <TextView
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#242424"
+                        android:layout_marginStart="13dp"
+                        android:layout_centerVertical="true"
+                        android:text="每日饮食热量"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView90" />
+
+                </RelativeLayout>
+                <TextView
+                    android:textColor="#696969"
+                    android:paddingTop="15dp"
+                    android:textSize="12sp"
+                    android:paddingRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:backgroundTint="#f9fafb"
+                    android:text="1. 优先保证每日蛋白质充分摄入\n2. 每日热量不得低于613kcal"
+                    android:singleLine="false"
+                    android:background="@color/colorSpiltWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

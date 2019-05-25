@@ -38,7 +38,7 @@
         <activity android:name=".ui.camera.CameraResultActivity" />
         <activity android:name=".ui.regist.ForgetActivity" />
         <activity android:name=".ui.daily.DailyActivity" />
-        <activity android:name=".ui.daily.ShowFoodActivity"></activity>
+        <activity android:name=".ui.suggest.ShowFoodActivity"></activity>
     </application>
 
 </manifest>

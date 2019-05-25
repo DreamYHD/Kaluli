@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.example.administrator.kalulli.ui.daily.ShowFoodActivity">
+    tools:context="com.example.administrator.kalulli.ui.suggest.ShowFoodActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

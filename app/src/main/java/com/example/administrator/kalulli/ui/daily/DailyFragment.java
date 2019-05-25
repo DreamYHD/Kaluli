@@ -99,7 +99,7 @@ public class DailyFragment extends Fragment {
                         morningTv.setText("未摄取");
                         afternoonTv.setText("未摄取");
                         eveningTv.setText("未摄取");
-                        dailyMoreTv.setText(800+"");
+                        dailyMoreTv.setText(700+"");
                     } else {
                         AVObject avObject = list.get(0);
                         double sum = 0.0;
@@ -121,7 +121,7 @@ public class DailyFragment extends Fragment {
                         } else {
                             sum += 0;
                         }
-                        dailyMoreTv.setText(800 - sum + "");
+                        dailyMoreTv.setText(700 - sum + "");
                     }
 
                 } else {
