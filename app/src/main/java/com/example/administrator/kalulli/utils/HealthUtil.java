@@ -6,11 +6,11 @@ package com.example.administrator.kalulli.utils;
 
 public class HealthUtil {
     //“克莱托指数”体重(kg)÷身高²(m)20-25正常，20以下瘦，25以上胖 某人是60kg，1.7m那就是60÷1.7²=20.76124567474 正常
-    public double getHealthNum(double weight,double height){
+    public static double getHealthNum(double weight,double height){
         return weight / (height * height);
     }
-    public String getHealth(double weight,double height){
-        double health = weight / (height * height);
+    public static String getHealth(String weight,String height){
+        double health = Double.parseDouble(weight) / (Double.parseDouble(height) * Double.parseDouble(height));
         String healthThing = "";
         if (health > 25){
             healthThing = "胖";

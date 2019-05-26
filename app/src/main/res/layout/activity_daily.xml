@@ -70,6 +70,7 @@
                         android:id="@+id/textView7" />
 
                     <TextView
+                        android:id="@+id/plan_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@+id/textView7"
@@ -84,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp" />
                 <TextView
-                    android:id="@+id/plan_tv"
+                    android:id="@+id/plan_content_tv"
                     android:textColor="#696969"
                     android:paddingTop="15dp"
                     android:textSize="12sp"
@@ -138,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp" />
                 <TextView
-                    android:id="@+id/test_tv"
+                    android:id="@+id/test_content_tv"
                     android:textColor="#696969"
                     android:paddingTop="15dp"
                     android:textSize="12sp"
