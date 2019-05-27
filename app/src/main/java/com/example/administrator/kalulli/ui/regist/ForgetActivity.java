@@ -70,7 +70,6 @@ public class ForgetActivity extends BaseActivity {
             });
         }
     }
-
     @OnClick(R.id.getSms_btn)
     public void onGetSmsBtnClicked() {
         AVUser.requestMobilePhoneVerifyInBackground(phoneNumber.getText().toString(), new RequestMobileCodeCallback() {
