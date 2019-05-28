@@ -56,7 +56,7 @@ public class SuggestAdapter extends RecyclerView.Adapter<SuggestAdapter.ViewHold
         String foodInfo = avObject.get(TableUtil.FOOD_DESCRIPTION).toString();
         holder.foodInfoItem.setText(foodInfo);
         holder.foodNameItem.setText(foodName);
-        holder.foodTypeItem.setText(foodType);
+        holder.foodTypeItem.setText("#"+foodType);
         Glide.with(context)
                 .load(imgUrl)
                 .placeholder(R.mipmap.ic_launcher)
