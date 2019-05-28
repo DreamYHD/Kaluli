@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -54,6 +55,7 @@ public class DailyFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.loading_tv)
     TextView loadingTv;
+    private String id;
 
     private Handler handler = new Handler() {
         @Override
@@ -61,8 +63,15 @@ public class DailyFragment extends Fragment {
             super.handleMessage(msg);
             loading.hide();
             loadingTv.setVisibility(View.GONE);
-            Intent intent = new Intent(getActivity(), DailyActivity.class);
-            startActivity(intent);
+            if (id == null || id.equals("")){
+                Toast.makeText(getActivity(), "今日还未进食", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent intent = new Intent(getActivity(), DailyActivity.class);
+                intent.putExtra("id",id);
+
+                startActivity(intent);
+            }
+
         }
     };
 
@@ -102,6 +111,7 @@ public class DailyFragment extends Fragment {
                         dailyMoreTv.setText(700+"");
                     } else {
                         AVObject avObject = list.get(0);
+                        id = avObject.getObjectId();
                         double sum = 0.0;
                         if (avObject.get(TableUtil.DAILY_MORNING) != null && !avObject.get(TableUtil.DAILY_MORNING).equals("")) {
                             morningTv.setText(avObject.get(TableUtil.DAILY_MORNING).toString());

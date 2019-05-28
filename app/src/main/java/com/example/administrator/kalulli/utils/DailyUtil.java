@@ -20,6 +20,7 @@ public class DailyUtil {
         AVUser avUser = AVUser.getCurrentUser();
         String healthType = HealthUtil.getHealth(avUser.get(TableUtil.USER_WEIGHT).toString(), avUser.get(TableUtil.USER_HEIGHT).toString());
         if (healthType.equals("胖")) {
+
             return "减肥";
         } else if (healthType.equals("瘦")) {
             return "增重";
@@ -49,7 +50,7 @@ public class DailyUtil {
         return result;
     }
 
-    public static String testDaily(String objectId) {
+    public static String testType(String objectId) {
         final String[] result = {""};
         final boolean[] is = {true};
         final AVObject avObject = AVObject.createWithoutData(TableUtil.DAILY_TABLE_NAME, objectId);
@@ -57,27 +58,28 @@ public class DailyUtil {
             @Override
             public void done(AVObject object, AVException e) {
                 if (e == null){
+                    Log.i(TAG, "done: testType");
                     String morning = avObject.get(TableUtil.DAILY_MORNING).toString();
                     String afternoon = avObject.get(TableUtil.DAILY_AFTERNOON).toString();
                     String evening = avObject.get(TableUtil.DAILY_EVENING).toString();
-                    if (morning == null || morning.equals("")){
+                    if (morning == null || morning.equals("0")){
                         result[0] = "不佳";
                         is[0] = false;
-                    }else  if (Integer.parseInt(morning) <= 50 || Integer.parseInt(morning) >= 350){
-                        result[0] = "不佳";
-                        is[0] = false;
-                    }
-                    if (afternoon == null || morning.equals("")){
-                        result[0] = "不佳";
-                        is[0] = false;
-                    }else if (Integer.parseInt(afternoon) <= 150 || Integer.parseInt(afternoon) >= 650){
+                    }else  if (Double.parseDouble(morning) <= 50 || Double.parseDouble(morning) >= 350){
                         result[0] = "不佳";
                         is[0] = false;
                     }
-                    if (evening == null || evening.equals("")){
+                    if (afternoon == null || morning.equals("0")){
                         result[0] = "不佳";
                         is[0] = false;
-                    }else if (Integer.parseInt(evening) <= 50 || Integer.parseInt(evening) >= 450){
+                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 650){
+                        result[0] = "不佳";
+                        is[0] = false;
+                    }
+                    if (evening == null || evening.equals("0")){
+                        result[0] = "不佳";
+                        is[0] = false;
+                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 450){
                         result[0] = "不佳";
                         is[0] = false;
                     }
@@ -93,7 +95,7 @@ public class DailyUtil {
         }
 
     }
-    public static List<String> testDailyContent(String objectId) {
+    public static List<String> testContent(String objectId) {
         final String[] result = {""};
         final List<String>list = new ArrayList<>();
         final boolean[] is = {true};
@@ -110,29 +112,30 @@ public class DailyUtil {
                     if (morning == null || morning.equals("")){
                         is[0] = false;
                         list.add(" 吃早餐,每天都要吃早餐,保证代谢且每天食欲更加稳定");
-                    }else  if (Integer.parseInt(morning) <= 50 || Integer.parseInt(morning) >= 350){
+                    }else  if (Double.parseDouble(morning) <= 50 ||Double.parseDouble(morning) >= 350){
                         is[0] = false;
                         list.add(" 三餐要均衡搭配，进食过多过少都伤胃");
                     }
                     if (afternoon == null || morning.equals("")){
                         is[0] = false;
                         list.add(" 午餐是三餐中比较重要的一餐哦，不吃午餐会导致身体呈现下坡的状态");
-                    }else if (Integer.parseInt(afternoon) <= 150 || Integer.parseInt(afternoon) >= 650){
+                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 650){
                         is[0] = false;
                         list.add(" 午餐要吃饱哦，但是也不能吃的太多");
                     }
                     if (evening == null || evening.equals("")){
                         is[0] = false;
                         list.add(" 晚餐十分重要,必须吃「好」。如果进食不当,过饱、过晚,都可能对人体健康造成一定的损害");
-                    }else if (Integer.parseInt(evening) <= 50 || Integer.parseInt(evening) >= 450){
+                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 450){
                         is[0] = false;
                         list.add(" 晚餐要吃七分饱，每餐食物不可过多或者过少，避免大胃口哦");
                     }
                     //2
-                    if ((Integer.parseInt(morning) + Integer.parseInt(afternoon) + Integer.parseInt(evening)) <= 700){
+                    if ((Double.parseDouble(morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) <= 700){
                         is[0] = false;
                         list.add(" 您今天的热量摄取未能达标哦，要多吃点哦");
-                    }else if ((Integer.parseInt(morning) + Integer.parseInt(afternoon) + Integer.parseInt(evening)) > 700){
+                    }else if ((Double.parseDouble
+                            (morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) > 700){
                         is[0] = false;
                         list.add(" 您今天的热量过多,要注意多运动");
                     }else{
