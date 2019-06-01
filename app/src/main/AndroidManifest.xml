@@ -33,12 +33,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.regist.RegisterActivity" />
-        <activity android:name=".ui.regist.LoginActivity" />
+        <activity android:name=".ui.me.RegisterActivity" />
+        <activity android:name=".ui.me.LoginActivity" />
         <activity android:name=".ui.camera.CameraResultActivity" />
-        <activity android:name=".ui.regist.ForgetActivity" />
+        <activity android:name=".ui.me.ForgetActivity" />
         <activity android:name=".ui.daily.DailyActivity" />
-        <activity android:name=".ui.suggest.ShowFoodActivity"></activity>
+        <activity android:name=".ui.suggest.ShowFoodActivity" />
+        <activity android:name=".ui.me.ChangeInfoActivity"></activity>
     </application>
 
 </manifest>

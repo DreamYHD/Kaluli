@@ -1,4 +1,4 @@
-package com.example.administrator.kalulli.ui.regist;
+package com.example.administrator.kalulli.ui.me;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {

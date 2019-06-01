@@ -1,4 +1,4 @@
-package com.example.administrator.kalulli.ui.regist;
+package com.example.administrator.kalulli.ui.me;
 
 import android.os.Bundle;
 import android.widget.Button;

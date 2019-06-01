@@ -61,6 +61,7 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
     RapidFloatingActionLayout doFbtnLayout;
     @BindView(R.id.loading)
     AVLoadingIndicatorView loading;
+    private int baseSize = 0;
 
     int selectPosition = 4;
     private RapidFloatingActionHelper rfabHelper;
@@ -82,7 +83,12 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
             public void click(int position, View view) {
                 Intent intent = new Intent(getActivity(), ShowFoodActivity.class);
                 intent.putExtra("objectId", alllist.get(position).getObjectId());
-                intent.putExtra("table", TableUtil.FOOD_TABLE_NAME);
+                if (position + 1 <= baseSize){
+                    intent.putExtra("table", TableUtil.FOOD_TABLE_NAME);
+                }else {
+                    intent.putExtra("table", TableUtil.DAILY_FOOD_TABLE_NAME);
+
+                }
                 startActivity(intent);
             }
         });
@@ -105,7 +111,12 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
         View view = inflater.inflate(R.layout.fragment_suggest, container, false);
         unbinder = ButterKnife.bind(this, view);
         initFloating();
-        getData();
+        if(AVUser.getCurrentUser() == null){
+            Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+        }else {
+
+            getData();
+        }
         return view;
     }
 
@@ -156,6 +167,7 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
             public void done(List<AVObject> avObjects, AVException avException) {
                 if (avException == null){
                     if (avObjects!= null&& avObjects.size()!=0){
+                        baseSize = avObjects.size();
                         alllist.addAll(avObjects);
                         getUserList(selectPosition);
                     }
@@ -218,103 +230,98 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
     }
 
     public void getUserList(final int position2) {
-        if (AVUser.getCurrentUser()!=null){
+        AVQuery<AVObject> query = new AVQuery<>(TableUtil.USER_TABLE_NAME);
+        //1 获取用户列表
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(final List<AVObject> list, AVException e) {
+                if (e == null){
+                    //2 基于用户特征计算相似度
+                    if (list != null && list.size() != 0) {
 
-            AVQuery<AVObject> query = new AVQuery<>(TableUtil.USER_TABLE_NAME);
-            //1 获取用户列表
-            query.findInBackground(new FindCallback<AVObject>() {
-                @Override
-                public void done(final List<AVObject> list, AVException e) {
-                    if (e == null){
-                        //2 基于用户特征计算相似度
-                        if (list != null && list.size() != 0) {
-
-                            Log.i(TAG, "done: user size = "+list.size());
-                            for (int i = 0; i < list.size(); i++) {
-                                AVObject avObject = list.get(i);
-                                AVUser avUser = AVUser.getCurrentUser();
-                                if (avObject.getObjectId().equals(avUser.getObjectId())){
-                                    continue;
-                                }
-                                double finalHeight = Double.parseDouble(avUser.get(TableUtil.USER_HEIGHT).toString());
-                                double finalWeight = Double.parseDouble(avUser.get(TableUtil.USER_WEIGHT).toString());
-                                double iHeight = Double.parseDouble(avObject.get(TableUtil.USER_HEIGHT).toString());
-                                double iWeight = Double.parseDouble(avObject.get(TableUtil.USER_WEIGHT).toString());
-                                double finalIco = finalWeight / (finalHeight * finalHeight);
-                                double iIco = iWeight / (iHeight * iHeight);
-                                //1
-                                if ((finalIco - iIco) <= 3 && (iIco - finalIco) <= 3) {
-                                    number += 4;
-                                }
-                                //2
-                                if (avObject.get(TableUtil.USER_SEX).equals(avUser.get(TableUtil.USER_SEX))) {
-                                    number += 2;
-                                } else {
-                                    number -= 1;
-                                }
-                                //3
-                                Log.i(TAG, "done: "+avUser.get(TableUtil.USER_AGE).toString());
-                                int finalAge = Integer.parseInt(avUser.get(TableUtil.USER_AGE).toString());
-                                int iAge = Integer.parseInt(avObject.get(TableUtil.USER_AGE).toString());
-                                if ((finalAge - iAge) <= 5 && (iAge - finalAge) <= 5) {
-                                    number += 1;
-                                } else if ((finalAge - iAge) >= 15 || (iAge - finalAge) >= 15) {
-                                    number -= 1;
-                                }
-                                //4
-                                String finalMajor = avUser.get(TableUtil.USER_MAJOR).toString();
-                                String iMajor = avObject.get(TableUtil.USER_MAJOR).toString();
-                                if (levenshtein(iMajor,finalMajor)) {
-                                    number += 1;
-                                }
-                                //5
-                                String finalLove = avUser.get(TableUtil.USER_LOVE).toString();
-                                String iLove = avObject.get(TableUtil.USER_LOVE).toString();
-                                if (levenshtein(finalLove,iLove)){
-                                    number += 2;
-                                }
-                                String type = "";
-                                if (number >= 5){
-                                    AVQuery<AVObject> query = new AVQuery<>(TableUtil.DAILY_FOOD_TABLE_NAME);
-                                    query.whereEqualTo(TableUtil.DAILY_FOOD_USER, avObject);
-                                    if (position2 == 0) {
-                                        type = "早餐";
-                                        query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
-                                    } else if (position2 == 1 ){
-                                        type = "午餐";
-                                        query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
-                                    }else if (position2 == 2){
-                                        type = "晚餐";
-                                        query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
-                                    }
-                                    // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
-                                    query.findInBackground(new FindCallback<AVObject>() {
-                                        @Override
-                                        public void done(List<AVObject> listL, AVException e) {
-                                            if (e == null){
-                                                alllist.addAll(listL);
-                                                handler.sendEmptyMessage(0);
-                                                Log.i(TAG, "done:listL "+ listL.size());
-                                            }else {
-                                                Log.e(TAG, "done: "+e.getMessage() );
-                                            }
-                                        }
-                                    });
-                                }
-                                number = 0;
+                        Log.i(TAG, "done: user size = "+list.size());
+                        for (int i = 0; i < list.size(); i++) {
+                            AVObject avObject = list.get(i);
+                            AVUser avUser = AVUser.getCurrentUser();
+                            if (avObject.getObjectId().equals(avUser.getObjectId())){
+                                continue;
                             }
-                        } else {
-                            Log.i(TAG, "done: list == null");
+                            double finalHeight = Double.parseDouble(avUser.get(TableUtil.USER_HEIGHT).toString());
+                            double finalWeight = Double.parseDouble(avUser.get(TableUtil.USER_WEIGHT).toString());
+                            double iHeight = Double.parseDouble(avObject.get(TableUtil.USER_HEIGHT).toString());
+                            double iWeight = Double.parseDouble(avObject.get(TableUtil.USER_WEIGHT).toString());
+                            double finalIco = finalWeight / (finalHeight * finalHeight);
+                            double iIco = iWeight / (iHeight * iHeight);
+                            //1
+                            if ((finalIco - iIco) <= 3 && (iIco - finalIco) <= 3) {
+                                number += 4;
+                            }
+                            //2
+                            if (avObject.get(TableUtil.USER_SEX).equals(avUser.get(TableUtil.USER_SEX))) {
+                                number += 2;
+                            } else {
+                                number -= 1;
+                            }
+                            //3
+                            Log.i(TAG, "done: "+avUser.get(TableUtil.USER_AGE).toString());
+                            int finalAge = Integer.parseInt(avUser.get(TableUtil.USER_AGE).toString());
+                            int iAge = Integer.parseInt(avObject.get(TableUtil.USER_AGE).toString());
+                            if ((finalAge - iAge) <= 5 && (iAge - finalAge) <= 5) {
+                                number += 1;
+                            } else if ((finalAge - iAge) >= 15 || (iAge - finalAge) >= 15) {
+                                number -= 1;
+                            }
+                            //4
+                            String finalMajor = avUser.get(TableUtil.USER_MAJOR).toString();
+                            String iMajor = avObject.get(TableUtil.USER_MAJOR).toString();
+                            if (levenshtein(iMajor,finalMajor)) {
+                                number += 1;
+                            }
+                            //5
+                            String finalLove = avUser.get(TableUtil.USER_LOVE).toString();
+                            String iLove = avObject.get(TableUtil.USER_LOVE).toString();
+                            if (levenshtein(finalLove,iLove)){
+                                number += 2;
+                            }
+                            String type = "";
+                            if (number >= 5){
+                                AVQuery<AVObject> query = new AVQuery<>(TableUtil.DAILY_FOOD_TABLE_NAME);
+                                query.whereEqualTo(TableUtil.DAILY_FOOD_USER, avObject);
+                                if (position2 == 0) {
+                                    type = "早餐";
+                                    query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
+                                } else if (position2 == 1 ){
+                                    type = "午餐";
+                                    query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
+                                }else if (position2 == 2){
+                                    type = "晚餐";
+                                    query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE,type);
+                                }
+                                // 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
+                                query.findInBackground(new FindCallback<AVObject>() {
+                                    @Override
+                                    public void done(List<AVObject> listL, AVException e) {
+                                        if (e == null){
+                                            alllist.addAll(listL);
+                                            handler.sendEmptyMessage(0);
+                                            Log.i(TAG, "done:listL "+ listL.size());
+                                        }else {
+                                            Log.e(TAG, "done: "+e.getMessage() );
+                                        }
+                                    }
+                                });
+                            }
+                            number = 0;
                         }
-                    }else {
-                        Log.e(TAG, "done: "+e.getMessage());
+                    } else {
+                        Log.i(TAG, "done: list == null");
                     }
-
+                }else {
+                    Log.e(TAG, "done: "+e.getMessage());
                 }
-            });
-        }else {
-            Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
-        }
+
+            }
+        });
 
     }
     //2 基于用户特征计算相似度
@@ -362,7 +369,6 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
             return false;
         }
     }
-
     //得到最小值
     private static int min(int... is) {
         int min = Integer.MAX_VALUE;

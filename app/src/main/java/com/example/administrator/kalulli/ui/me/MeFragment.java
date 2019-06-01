@@ -26,7 +26,6 @@ import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.base.OnClickListener;
 import com.example.administrator.kalulli.ui.adapter.DailyAdapter;
 import com.example.administrator.kalulli.ui.suggest.ShowFoodActivity;
-import com.example.administrator.kalulli.ui.regist.LoginActivity;
 import com.example.administrator.kalulli.utils.TableUtil;
 
 import java.util.ArrayList;
@@ -77,6 +76,13 @@ public class MeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         unbinder = ButterKnife.bind(this, view);
         getData();
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ChangeInfoActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
