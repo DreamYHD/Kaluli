@@ -39,7 +39,9 @@
         <activity android:name=".ui.me.ForgetActivity" />
         <activity android:name=".ui.daily.DailyActivity" />
         <activity android:name=".ui.suggest.ShowFoodActivity" />
-        <activity android:name=".ui.me.ChangeInfoActivity"></activity>
+        <activity android:name=".ui.me.ChangeInfoActivity" />
+        <activity android:name=".ui.daily.DailyWeightActivity" />
+        <activity android:name=".ui.suggest.SuggestDailyActivity"></activity>
     </application>
 
 </manifest>

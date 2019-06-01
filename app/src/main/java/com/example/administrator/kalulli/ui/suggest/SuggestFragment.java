@@ -114,7 +114,6 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
         if(AVUser.getCurrentUser() == null){
             Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
         }else {
-
             getData();
         }
         return view;
@@ -144,6 +143,13 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
                 .setIconNormalColor(0xffd84315)
                 .setIconPressedColor(0xffbf360c)
                 .setWrapper(3)
+        );
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("每日推荐")
+                .setResId(R.drawable.ic_add_black_24dp)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setWrapper(4)
         );
         rfaContent
                 .setItems(items)
@@ -192,31 +198,37 @@ public class SuggestFragment extends Fragment implements RapidFloatingActionCont
     }
 
     private void getDataByPosition(int position) {
-        loading.show();
-        getUserList(position);
-        Log.i(TAG, "getDataByPosition: " + position);
-        String type = "";
-        if (position == 0) {
-            type = "早餐";
-        } else {
-            type = "通用";
-        }
-        AVQuery<AVObject> query = new AVQuery<>(TableUtil.FOOD_TABLE_NAME);
-        query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE, type);
-        query.findInBackground(new FindCallback<AVObject>() {
-            @Override
-            public void done(List<AVObject> avObjects, AVException avException) {
-                if (avException == null){
-                    if (alllist == null){
-                        alllist = new ArrayList<>();
-                    }else {
-
-                        alllist.addAll(avObjects);
-                    }
-                    handler.sendEmptyMessage(0);
-                }
+        if (position == 3){
+            Intent intent = new Intent(getContext(),SuggestDailyActivity.class);
+            startActivity(intent);
+        }else {
+            loading.show();
+            getUserList(position);
+            Log.i(TAG, "getDataByPosition: " + position);
+            String type = "";
+            if (position == 0) {
+                type = "早餐";
+            } else {
+                type = "通用";
             }
-        });
+            AVQuery<AVObject> query = new AVQuery<>(TableUtil.FOOD_TABLE_NAME);
+            query.whereEqualTo(TableUtil.DAILY_FOOD_TYPE, type);
+            query.findInBackground(new FindCallback<AVObject>() {
+                @Override
+                public void done(List<AVObject> avObjects, AVException avException) {
+                    if (avException == null){
+                        if (alllist == null){
+                            alllist = new ArrayList<>();
+                        }else {
+
+                            alllist.addAll(avObjects);
+                        }
+                        handler.sendEmptyMessage(0);
+                    }
+                }
+            });
+        }
+
 
     }
 

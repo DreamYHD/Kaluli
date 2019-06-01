@@ -55,6 +55,10 @@ public class DailyFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.loading_tv)
     TextView loadingTv;
+    @BindView(R.id.textView10)
+    TextView textView10;
+    @BindView(R.id.weight_btn)
+    Button weightBtn;
     private String id;
 
     private Handler handler = new Handler() {
@@ -63,11 +67,11 @@ public class DailyFragment extends Fragment {
             super.handleMessage(msg);
             loading.hide();
             loadingTv.setVisibility(View.GONE);
-            if (id == null || id.equals("")){
+            if (id == null || id.equals("")) {
                 Toast.makeText(getActivity(), "今日还未进食", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 Intent intent = new Intent(getActivity(), DailyActivity.class);
-                intent.putExtra("id",id);
+                intent.putExtra("id", id);
 
                 startActivity(intent);
             }
@@ -108,7 +112,7 @@ public class DailyFragment extends Fragment {
                         morningTv.setText("未摄取");
                         afternoonTv.setText("未摄取");
                         eveningTv.setText("未摄取");
-                        dailyMoreTv.setText(700+"");
+                        dailyMoreTv.setText(800 + "千焦");
                     } else {
                         AVObject avObject = list.get(0);
                         id = avObject.getObjectId();
@@ -131,7 +135,7 @@ public class DailyFragment extends Fragment {
                         } else {
                             sum += 0;
                         }
-                        dailyMoreTv.setText(700 - sum + "");
+                        dailyMoreTv.setText(800 - sum + "千焦");
                     }
 
                 } else {
@@ -166,5 +170,11 @@ public class DailyFragment extends Fragment {
             }
         }).start();
 
+    }
+
+    @OnClick(R.id.weight_btn)
+    public void onViewClicked2() {
+        Intent intent = new Intent(getContext(),DailyWeightActivity.class);
+        startActivity(intent);
     }
 }

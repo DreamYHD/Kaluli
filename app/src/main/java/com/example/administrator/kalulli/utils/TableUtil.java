@@ -42,4 +42,9 @@ public class TableUtil {
     public static final String DAILY_FOOD_CALORIE = "calorie";
     public static final String DAILY_FOOD_USER = "user";
     public static final String DAILY_FOOD_AFFECT = "affect";
+    //dailyweight
+    public static final String DAILY_WEIGHT_TABLE_NAME = "dailyweight";
+    public static final String DAILY_WEIGHT_ARRAY = "array";
+    public static final String DAILY_WEIGHT_USER = "user";
+
 }

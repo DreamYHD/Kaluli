@@ -227,11 +227,11 @@ public class DailyActivity extends BaseActivity {
                         testContent.add(" 晚餐要吃七分饱，每餐食物不可过多或者过少，避免大胃口哦");
                     }
                     //2
-                    if ((Double.parseDouble(morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) <= 700){
+                    if ((Double.parseDouble(morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) <= 800){
                         is[0] = false;
                         testContent.add(" 您今天的热量摄取未能达标哦，要多吃点哦");
                     }else if ((Double.parseDouble
-                            (morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) > 700){
+                            (morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) > 1700){
                         is[0] = false;
                         testContent.add(" 您今天的热量过多,要注意多运动");
                     }else{

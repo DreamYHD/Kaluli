@@ -45,7 +45,7 @@ public class ShowFoodActivity extends BaseActivity {
                 Log.i(TAG, "logicActivity: " + avObject.getObjectId());
                 foodName.setText(avObject.get(TableUtil.FOOD_NAME).toString());
                 foodAffect.setText("功效:  "+avObject.get(TableUtil.FOOD_AFFECT).toString());
-                foodCalorie.setText("卡路里含量:"+avObject.get(TableUtil.FOOD_CALORIE).toString());
+                foodCalorie.setText("卡路里含量:"+avObject.get(TableUtil.FOOD_CALORIE).toString()+"千焦");
                 foodType.setText("#"+avObject.get(TableUtil.FOOD_TYPE).toString());
                 foodInfo.setText(avObject.get(TableUtil.FOOD_DESCRIPTION).toString());
                 Glide.with(mActivity)

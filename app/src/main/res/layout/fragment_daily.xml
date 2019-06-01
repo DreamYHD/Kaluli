@@ -135,7 +135,16 @@
     </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50dp" />
+    <Button
+        android:id="@+id/weight_btn"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:text="体重曲线"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/shape_back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
     <Button
         android:id="@+id/daily_btn"
         android:textSize="20sp"
@@ -144,7 +153,7 @@
         android:textColor="@color/colorAccent"
         android:background="@drawable/shape_back"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="50dp" />
     <RelativeLayout
 
         android:layout_width="match_parent"
