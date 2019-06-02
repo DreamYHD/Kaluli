@@ -61,7 +61,7 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.ViewHolder> 
         String imgUrl = avObject.get(TableUtil.DAILY_FOOD_URL).toString();
         String calories = avObject.get(TableUtil.DAILY_FOOD_CALORIE).toString();
         String time = avObject.get(TableUtil.DAILY_FOOD_TIME).toString();
-        holder.foodCalorie.setText("卡路里含量: "+calories);
+        holder.foodCalorie.setText("卡路里含量: "+calories+"千卡");
         holder.foodName.setText("食物名称: "+foodName);
         holder.showTime.setText(time);
         Glide.with(context)

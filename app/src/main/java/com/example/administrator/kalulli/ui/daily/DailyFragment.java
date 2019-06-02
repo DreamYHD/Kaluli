@@ -20,6 +20,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.example.administrator.kalulli.R;
+import com.example.administrator.kalulli.utils.HealthUtil;
 import com.example.administrator.kalulli.utils.TableUtil;
 import com.example.administrator.kalulli.utils.TimeUtil;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -112,7 +113,7 @@ public class DailyFragment extends Fragment {
                         morningTv.setText("未摄取");
                         afternoonTv.setText("未摄取");
                         eveningTv.setText("未摄取");
-                        dailyMoreTv.setText(800 + "千焦");
+                        dailyMoreTv.setText((int) Double.parseDouble(HealthUtil.getKC()) + "千卡");
                     } else {
                         AVObject avObject = list.get(0);
                         id = avObject.getObjectId();
@@ -135,7 +136,7 @@ public class DailyFragment extends Fragment {
                         } else {
                             sum += 0;
                         }
-                        dailyMoreTv.setText(800 - sum + "千焦");
+                        dailyMoreTv.setText(Integer.parseInt(HealthUtil.getKC()) - sum + "千卡");
                     }
 
                 } else {
@@ -144,7 +145,6 @@ public class DailyFragment extends Fragment {
             }
         });
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

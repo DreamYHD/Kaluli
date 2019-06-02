@@ -42,7 +42,7 @@ public class CameraResultAdapter extends RecyclerView.Adapter<CameraResultAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: "+list.get(position).getPicture_url());
-        double number = Integer.parseInt(list.get(position).getNumber())*2.5;
+        double number = Integer.parseInt(list.get(position).getNumber()) * 3.5;
         holder.number.setText(number+"");
         holder.name.setText(list.get(position).getFoodname());
         Glide.with(context)

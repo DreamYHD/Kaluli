@@ -125,7 +125,7 @@ public class SuggestDailyActivity extends BaseActivity {
                             .into(afternoon2Image);
                 }
             }
-            sumTv.setText("总计 "+sum+" 千焦，祝您饮食愉快");
+            sumTv.setText("预计 "+sum+" 千卡，祝您饮食愉快");
         }
     };
 

@@ -117,7 +117,7 @@ public class CameraResultActivity extends BaseActivity {
                             String info = foodJson.getDescription();
                             avObject.put(TableUtil.DAILY_FOOD_USER, mAVUserFinal);
                             avObject.put(TableUtil.DAILY_FOOD_URL, imgUrl);
-                            avObject.put(TableUtil.DAILY_FOOD_CALORIE, Integer.parseInt(calorie)*2+"");
+                            avObject.put(TableUtil.DAILY_FOOD_CALORIE, Integer.parseInt(calorie) * 4+"");
                             avObject.put(TableUtil.DAILY_FOOD_DESCRIPTION, info);
                             avObject.put(TableUtil.DAILY_FOOD_TIME, TimeUtil.getRealDate());
                             avObject.put(TableUtil.DAILY_FOOD_NAME, foodName);
