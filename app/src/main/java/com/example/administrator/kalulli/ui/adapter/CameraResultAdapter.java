@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.administrator.kalulli.R;
 import com.example.administrator.kalulli.data.FoodJson;
+import com.example.administrator.kalulli.utils.ComputerTypeUtil;
+import com.example.administrator.kalulli.utils.TableUtil;
 
 import java.util.List;
 
@@ -42,7 +44,15 @@ public class CameraResultAdapter extends RecyclerView.Adapter<CameraResultAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: "+list.get(position).getPicture_url());
-        double number = Integer.parseInt(list.get(position).getNumber()) * 3.5;
+        String type = ComputerTypeUtil.getType();
+        double number;
+        if (type.equals("早餐")){
+            number = Integer.parseInt(list.get(position).getNumber()) * 2;
+        }else if (type.equals("午餐")){
+            number = Integer.parseInt(list.get(position).getNumber()) * 3.5;
+        }else {
+            number = Integer.parseInt(list.get(position).getNumber()) * 3;
+        }
         holder.number.setText(number+"");
         holder.name.setText(list.get(position).getFoodname());
         Glide.with(context)

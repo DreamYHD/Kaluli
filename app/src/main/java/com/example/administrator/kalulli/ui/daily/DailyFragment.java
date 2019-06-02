@@ -136,7 +136,7 @@ public class DailyFragment extends Fragment {
                         } else {
                             sum += 0;
                         }
-                        dailyMoreTv.setText(Integer.parseInt(HealthUtil.getKC()) - sum + "千卡");
+                        dailyMoreTv.setText((int)Double.parseDouble(HealthUtil.getKC()) - sum + "千卡");
                     }
 
                 } else {

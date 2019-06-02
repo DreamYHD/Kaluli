@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="245dp"
+        android:layout_height="210dp"
         android:background="@drawable/me_img">
 
 
@@ -19,7 +19,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/imageButton2"
             android:layout_marginStart="23dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/login" />
 
         <ImageView

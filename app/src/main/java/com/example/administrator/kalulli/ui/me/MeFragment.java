@@ -106,8 +106,6 @@ public class MeFragment extends Fragment {
                 }
             });
 
-
-
         }else {
             textView.setText("请登录");
         }

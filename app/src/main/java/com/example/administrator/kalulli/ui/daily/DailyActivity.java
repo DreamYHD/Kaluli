@@ -163,21 +163,21 @@ public class DailyActivity extends BaseActivity {
                     if (morning == null || morning.equals("0")){
                         testType = "不佳";
                         is[0] = false;
-                    }else  if (Double.parseDouble(morning) <= 50 || Double.parseDouble(morning) >= 350){
+                    }else  if (Double.parseDouble(morning) <= 50 || Double.parseDouble(morning) >= 550){
                         testType = "不佳";
                         is[0] = false;
                     }
                     if (afternoon == null || morning.equals("0")){
                         testType = "不佳";
                         is[0] = false;
-                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 650){
+                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 1450){
                         testType = "不佳";
                         is[0] = false;
                     }
                     if (evening == null || evening.equals("0")){
                         testType = "不佳";
                         is[0] = false;
-                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 450){
+                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 750){
                         testType = "不佳";
                         is[0] = false;
                     }
@@ -208,30 +208,30 @@ public class DailyActivity extends BaseActivity {
                     if (morning == null || morning.equals("")){
                         is[0] = false;
                         testContent.add(" 吃早餐,每天都要吃早餐,保证代谢且每天食欲更加稳定");
-                    }else  if (Double.parseDouble(morning) <= 50 ||Double.parseDouble(morning) >= 350){
+                    }else  if (Double.parseDouble(morning) <= 50 ||Double.parseDouble(morning) >= 550){
                         is[0] = false;
                         testContent.add(" 三餐要均衡搭配，进食过多过少都伤胃");
                     }
                     if (afternoon == null || morning.equals("")){
                         is[0] = false;
                         testContent.add(" 午餐是三餐中比较重要的一餐哦，不吃午餐会导致身体呈现下坡的状态");
-                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 650){
+                    }else if (Double.parseDouble(afternoon) <= 150 || Double.parseDouble(afternoon) >= 1450){
                         is[0] = false;
                         testContent.add(" 午餐要吃饱哦，但是也不能吃的太多");
                     }
                     if (evening == null || evening.equals("")){
                         is[0] = false;
                         testContent.add(" 晚餐十分重要,必须吃「好」。如果进食不当,过饱、过晚,都可能对人体健康造成一定的损害");
-                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 450){
+                    }else if (Double.parseDouble(evening) <= 50 || Double.parseDouble(evening) >= 750){
                         is[0] = false;
                         testContent.add(" 晚餐要吃七分饱，每餐食物不可过多或者过少，避免大胃口哦");
                     }
                     //2
-                    if ((Double.parseDouble(morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) <= 800){
+                    if ((Double.parseDouble(morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) <= (int) Double.parseDouble(HealthUtil.getKC())){
                         is[0] = false;
                         testContent.add(" 您今天的热量摄取未能达标哦，要多吃点哦");
                     }else if ((Double.parseDouble
-                            (morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) > 1700){
+                            (morning) + Double.parseDouble(afternoon) + Double.parseDouble(evening)) > 2500){
                         is[0] = false;
                         testContent.add(" 您今天的热量过多,要注意多运动");
                     }else{
