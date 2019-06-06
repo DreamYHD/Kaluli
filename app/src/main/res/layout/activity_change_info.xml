@@ -148,7 +148,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="103dp"
         android:background="@color/colorAccent"
-        android:text="注册"
+        android:text="提交修改"
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
 

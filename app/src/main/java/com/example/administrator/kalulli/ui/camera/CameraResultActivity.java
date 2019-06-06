@@ -147,10 +147,10 @@ public class CameraResultActivity extends BaseActivity {
                                                             avObject1.put(TableUtil.DAILY_MORNING, Integer.parseInt(calorie)*2+"");
 
                                                         } else if (ComputerTypeUtil.getType().equals("午餐")) {
-                                                            avObject1.put(TableUtil.DAILY_AFTERNOON, Integer.parseInt(calorie)*2+"");
+                                                            avObject1.put(TableUtil.DAILY_AFTERNOON, Integer.parseInt(calorie)*3.5+"");
 
                                                         } else {
-                                                            avObject1.put(TableUtil.DAILY_EVENING, Integer.parseInt(calorie)*2+"");
+                                                            avObject1.put(TableUtil.DAILY_EVENING, Integer.parseInt(calorie)*3+"");
                                                         }
                                                         avObject1.put(TableUtil.DAILY_USER, mAVUserFinal);
                                                         avObject1.put(TableUtil.DAILY_DATE, TimeUtil.getDate());
@@ -178,19 +178,19 @@ public class CameraResultActivity extends BaseActivity {
                                                         } else if (ComputerTypeUtil.getType().equals("午餐")) {
                                                             if (avObject2.get(TableUtil.DAILY_AFTERNOON) == null
                                                                     || avObject2.get(TableUtil.DAILY_AFTERNOON).equals("")) {
-                                                                avObject2.put(TableUtil.DAILY_AFTERNOON, Integer.parseInt( calorie)*2  + "");
+                                                                avObject2.put(TableUtil.DAILY_AFTERNOON, Integer.parseInt( calorie)*3.5  + "");
                                                             } else {
                                                                 double calorie2 = Double.parseDouble(avObject2.getString(TableUtil.DAILY_AFTERNOON));
-                                                                avObject2.put(TableUtil.DAILY_AFTERNOON, calorie2 + Integer.parseInt( calorie)*2  + "");
+                                                                avObject2.put(TableUtil.DAILY_AFTERNOON, calorie2 + Integer.parseInt( calorie)*3.5  + "");
                                                             }
 
                                                         } else {
                                                             if (avObject2.get(TableUtil.DAILY_EVENING) == null
                                                                     || avObject2.get(TableUtil.DAILY_EVENING).equals("")) {
-                                                                avObject2.put(TableUtil.DAILY_EVENING, Integer.parseInt( calorie)*2  + "");
+                                                                avObject2.put(TableUtil.DAILY_EVENING, Integer.parseInt( calorie)*3  + "");
                                                             } else {
                                                                 double calorie2 = Double.parseDouble(avObject2.getString(TableUtil.DAILY_EVENING));
-                                                                avObject2.put(TableUtil.DAILY_EVENING, calorie2 + Integer.parseInt( calorie)*2  + "");
+                                                                avObject2.put(TableUtil.DAILY_EVENING, calorie2 + Integer.parseInt( calorie)*3  + "");
                                                             }
                                                         }
                                                         avObject2.saveInBackground(new SaveCallback() {
